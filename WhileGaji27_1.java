@@ -1,42 +1,30 @@
 import java.util.Scanner;
-public class WhileGaji27_1 {
+
+public class DoWhileCuti27 {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int jumlahKaryawan, jumlahJamLembur;
-        double gajiLembur = 0, totalGajiLembur = 0;
+        Scanner sc27 = new Scanner(System.in);
+        int jatahCuti, jumlahHari;
+        String konfirmasi;
+        System.out.print("Jatah cuti: ");
+        jatahCuti = sc27.nextInt();
 
-        String jabatan;
-        System.out.print ("Masukkan jumlah karyawan: ");
-        jumlahKaryawan = scan.nextInt();
+        do {
+            System.out.print("Apakah Anda ingin mengambil cuti (y/t)? ");
+            konfirmasi = sc27.next();
 
-        int i = 0;
+            if (konfirmasi.equalsIgnoreCase("y")){
+            
+            System.out.print("Jumlah hari: ");
+            jumlahHari = sc27.nextInt();
 
-        while (i < jumlahKaryawan) {
-            System.out.println("Pilihan jabatan - Direktur, Manajer, Karyawan");
-            System.out.print("Masukkan jabatan karyawan ke-" + (i+1) + ": ");
-            jabatan = scan.next();
-            System.out.print("Masukkan jumlah jam lembur: ");
-            jumlahJamLembur = scan.nextInt();
-            i++;
-
-            if (jabatan.equalsIgnoreCase("direktur")) {
-                continue;
-            } else if (jabatan.equalsIgnoreCase("manajer")) {
-                gajiLembur = jumlahJamLembur * 100000;
-            }
-            else if (jabatan.equalsIgnoreCase("karyawan")) {
-                gajiLembur = jumlahJamLembur * 75000;
+            if (jumlahHari <= jatahCuti) {
+                jatahCuti -= jumlahHari;
+                System.out.println("Sisa jatah cuti: " + jatahCuti);
             } else {
-                System.out.println("Jabatan Invalid");
-                i--;
-                gajiLembur = jumlahJamLembur * 0;
+                System.out.println("Sisa jatah cuti Anda tidak mencukupi");
+                break;
             }
-
-            totalGajiLembur += gajiLembur;
         }
-        System.out.println("Total gaji lembur: " + totalGajiLembur);
-
-
-
+     } while (jatahCuti > 0);
     }
 }
